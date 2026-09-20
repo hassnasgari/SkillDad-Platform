@@ -1,0 +1,12 @@
+﻿# Archives and zip builds
+*.zip
+_archive/
+
+# Temporary data
+api/messages.json
+
+# IDE & OS
+.vs/
+.idea/
+Thumbs.db
+[Dd]esktop.ini
