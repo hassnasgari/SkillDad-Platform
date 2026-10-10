@@ -993,14 +993,12 @@ const APARAT_OFFLINE_DATABASE = [
 
     const reachable = await new Promise((resolve) => {
       let resolved = false;
-      const controller = new AbortController();
-      const timeoutMs = 1700;
+      const timeoutMs = 5000;
 
       const finish = (result) => {
         if (!resolved) {
           resolved = true;
           clearTimeout(timer);
-          try { controller.abort(); } catch(e) {}
           resolve(result);
         }
       };
@@ -1009,43 +1007,29 @@ const APARAT_OFFLINE_DATABASE = [
         finish(false);
       }, timeoutMs);
 
-      const probeUrl = 'https://i.ytimg.com/vi/dQw4w9WgXcQ/default.jpg?_cb=' + Date.now();
-
-      // Channel 1: Strict CORS fetch to YouTube CDN (fails if blocked or hijacked by ISP filtering)
-      fetch(probeUrl, {
-        mode: 'cors',
-        cache: 'no-store',
-        signal: controller.signal
-      }).then((res) => {
-        if (res.ok) {
-          finish(true);
-        } else {
-          finish(false);
-        }
-      }).catch(() => {
-        // Network error, connection reset, or CORS drop by filtering
-      });
-
-      // Channel 2: Genuine YouTube CDN thumbnail image object
+      // Probe using YouTube thumbnail image
       try {
         const probeImg = new Image();
         probeImg.onload = () => { finish(true); };
         probeImg.onerror = () => { finish(false); };
-        probeImg.src = probeUrl;
-      } catch(e) {}
+        probeImg.src = 'https://img.youtube.com/vi/lqNf8y0f_Js/default.jpg?_cb=' + Date.now();
+      } catch(e) {
+        finish(false);
+      }
     });
 
     isYouTubeReachable = reachable;
     isProbing = false;
 
-    // Absolute Network Truth:
-    // If YouTube is unreachable -> ALWAYS Aparat (Domestic Mode), regardless of manual toggle
-    // If YouTube is reachable -> Auto-activate YouTube (unless user specifically selected Aparat in this session)
+    let savedPref = '';
+    try {
+      savedPref = localStorage.getItem('skilldad_featured_pref') || '';
+    } catch(e) {}
+
     let newSource = 'aparat';
-    if (reachable) {
-      newSource = (userManuallySelected && currentVideoSource === 'aparat') ? 'aparat' : 'youtube';
+    if (savedPref === 'youtube' || reachable) {
+      newSource = (savedPref === 'aparat') ? 'aparat' : 'youtube';
     } else {
-      userManuallySelected = false; // Reset if VPN disconnected
       newSource = 'aparat';
     }
 
@@ -1119,10 +1103,13 @@ const APARAT_OFFLINE_DATABASE = [
   window.setSkillDadVideoSource = function(src) {
     if (src !== 'youtube' && src !== 'aparat') return;
 
-    if (src === 'youtube' && !isYouTubeReachable) {
-      alert('❌ اتصال به سرورهای یوتیوب برقرار نشد.\n\nبه دلیل محدودیت‌های شبکه، برای مشاهده ۱۹۵ ویدیوی یوتیوب لطفاً ابتدا فیلترشکن خود را روشن فرمایید.');
-      return;
+    if (src === 'youtube') {
+      isYouTubeReachable = true;
     }
+
+    try {
+      localStorage.setItem('skilldad_featured_pref', src);
+    } catch(e) {}
 
     userManuallySelected = true;
     currentVideoSource = src;
