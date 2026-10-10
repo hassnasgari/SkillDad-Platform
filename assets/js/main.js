@@ -1289,9 +1289,9 @@ function initVisitorTracking() {
     guidesEl.textContent = isEn ? savedGuides + '+' : savedGuides.toLocaleString('fa-IR') + '+';
   }
 
-  // Fetch and track real visit from backend api/stats.php
+  // Fetch and track real visit from backend api/stats.php with anti-cache timestamp
   try {
-    fetch('api/stats.php?action=visit')
+    fetch('api/stats.php?action=visit&_t=' + Date.now(), { cache: 'no-store' })
       .then(res => res.json())
       .then(data => {
         if (data && typeof data.total_visits === 'number') {
@@ -2176,56 +2176,7 @@ function shareCurrentArticle() {
   }
 }
 
-// =============================================================================
-// 10. VISITOR & STATS LIVE ROLLING ENGINE
-// =============================================================================
-function initVisitorCounter() {
-  const totalEl = document.getElementById('totalVisitsCounter');
-  const todayEl = document.getElementById('todayVisitsCounter');
-  const onlineEl = document.getElementById('onlineStatusCounter');
 
-  let baseTotal = 1250;
-  let baseToday = 28;
-
-  // Fetch from server if available
-  fetch('api/stats.php')
-    .then(r => r.json())
-    .then(data => {
-      if (data && data.total_visits) baseTotal = data.total_visits;
-      if (data && data.today_visits) baseToday = data.today_visits;
-      animateVisitorCounter(totalEl, baseTotal);
-      animateVisitorCounter(todayEl, baseToday);
-    })
-    .catch(() => {
-      animateVisitorCounter(totalEl, baseTotal);
-      animateVisitorCounter(todayEl, baseToday);
-    });
-
-  if (onlineEl) {
-    const isEn = document.documentElement.lang === 'en';
-    onlineEl.textContent = isEn ? 'Online' : 'فعال';
-  }
-}
-
-function animateVisitorCounter(el, target) {
-  if (!el) return;
-  const isEn = document.documentElement.lang === 'en';
-  let start = Math.floor(target * 0.9);
-  const duration = 1200;
-  const stepTime = 30;
-  const steps = duration / stepTime;
-  const increment = (target - start) / steps;
-
-  const timer = setInterval(() => {
-    start += increment;
-    if (start >= target) {
-      start = target;
-      clearInterval(timer);
-    }
-    const formatted = Math.floor(start).toLocaleString(isEn ? 'en-US' : 'fa-IR');
-    el.textContent = formatted;
-  }, stepTime);
-}
 
 window.openArticleModal = function(artKey) {
   const art = magazineArticles[artKey];
