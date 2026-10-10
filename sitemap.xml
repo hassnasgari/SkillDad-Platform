@@ -138,6 +138,97 @@
     <lastmod>2026-09-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.88</priority>
+  <!-- 3.1 مقالات فوق تخصصی فنی و تاسیسات (High-Volume Search Queries & Real Videos) -->
+  <url>
+    <loc>https://skilldad.ir/article-water-pump-troubleshoot.html</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.92</priority>
+    <video:video>
+      <video:thumbnail_loc>https://static.cdn.asset.aparat.com/avt/69552985-1766-b__8542.jpg</video:thumbnail_loc>
+      <video:title>رفع مشکل خاموش نشدن و یکسره کار کردن پمپ آب با هواگیری</video:title>
+      <video:description>آموزش تنظیم کلید اتوماتیک پمپ آب خانگی و تست تیوپ منبع انبساط در اسکیل‌دد</video:description>
+      <video:player_loc>https://www.aparat.com/video/video/embed/videohash/meolcy3/vt/frame</video:player_loc>
+    </video:video>
+  </url>
+
+  <url>
+    <loc>https://skilldad.ir/article-low-water-pressure-acid-flush.html</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.92</priority>
+    <video:video>
+      <video:thumbnail_loc>https://static.cdn.asset.aparat.com/avt/73041654-9098-b__5058.jpg</video:thumbnail_loc>
+      <video:title>معجزه افزایش فشار آب ! اسیدشویی لوله‌های آب گرم</video:title>
+      <video:description>آموزش اسیدشویی مدار لوله‌کشی و افزایش فوری فشار آب گرم در اسکیل‌دد</video:description>
+      <video:player_loc>https://www.aparat.com/video/video/embed/videohash/tywxzq4/vt/frame</video:player_loc>
+    </video:video>
+  </url>
+
+  <url>
+    <loc>https://skilldad.ir/article-package-pressure-drop.html</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.92</priority>
+    <video:video>
+      <video:thumbnail_loc>https://static.cdn.asset.aparat.com/avt/69550844-1960-b__7721.jpg</video:thumbnail_loc>
+      <video:title>تنظیم فشار پکیج : چگونه مشکل افت فشار آب پکیج را حل کنیم؟</video:title>
+      <video:description>آموزش کار با شیر پرکن و تنظیم بار پکیج دیواری در اسکیل‌دد</video:description>
+      <video:player_loc>https://www.aparat.com/video/video/embed/videohash/yfmkxoe/vt/frame</video:player_loc>
+    </video:video>
+  </url>
+
+  <url>
+    <loc>https://skilldad.ir/article-doorbell-intercom-troubleshoot.html</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.92</priority>
+    <video:video>
+      <video:thumbnail_loc>https://static.cdn.asset.aparat.com/avt/67531907-8468-b__6525.jpg</video:thumbnail_loc>
+      <video:title>زنگ آیفون صدا نداره؟ آموزش کامل تعمیر در خانه</video:title>
+      <video:description>آموزش تست بلندگو، تعویض هوک و رفع قطع شدن صدای زنگ آیفون صوتی و تصویری</video:description>
+      <video:player_loc>https://www.aparat.com/video/video/embed/videohash/wtc4339/vt/frame</video:player_loc>
+    </video:video>
+  </url>
+
+  <url>
+    <loc>https://skilldad.ir/article-cooler-belt-squeak-fix.html</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.92</priority>
+    <video:video>
+      <video:thumbnail_loc>https://static.cdn.asset.aparat.com/avt/64834128-1650-b__3681.jpg</video:thumbnail_loc>
+      <video:title>رفع صدای جیر جیر کولر : تنظیم تسمه ی کولر آبی</video:title>
+      <video:description>آموزش تنظیم و رگلاژ تسمه کولر آبی و رفع سوت کشیدن در اسکیل‌دد</video:description>
+      <video:player_loc>https://www.aparat.com/video/video/embed/videohash/ajpc0gn/vt/frame</video:player_loc>
+    </video:video>
+  </url>
+
+  <url>
+    <loc>https://skilldad.ir/article-gas-stove-igniter-repair.html</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.92</priority>
+    <video:video>
+      <video:thumbnail_loc>https://static.cdn.asset.aparat.com/avt/66537571-4103-b__6972.jpg</video:thumbnail_loc>
+      <video:title>تعمیر فندک اجاق گاز در خانه</video:title>
+      <video:description>آموزش رفع جرقه نزدن و یکسره شدن فندک اجاق گاز در خانه</video:description>
+      <video:player_loc>https://www.aparat.com/video/video/embed/videohash/vghge8f/vt/frame</video:player_loc>
+    </video:video>
+  </url>
+
+  <url>
+    <loc>https://skilldad.ir/article-water-heater-pilot-fix.html</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.92</priority>
+  </url>
+
+  <url>
+    <loc>https://skilldad.ir/article-mixer-tap-cartridge-replacement.html</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.92</priority>
   </url>
 
   <!-- 4. سایر صفحات کاربردی -->
