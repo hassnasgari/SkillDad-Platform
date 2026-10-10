@@ -89,7 +89,7 @@ function initLanguageToggle() {
 
 const siteTranslations = {
   fa: {
-    page_title: 'SkillDad | دنیای یک پدر',
+    page_title: 'آموزش تعمیرات خانه و مهارت‌های فنی کاربردی | اسکیل‌دد (SkillDad)',
     lang_btn: 'English',
     nav_home: 'صفحه اصلی',
     nav_troubleshoot: 'عیب‌یاب',
@@ -229,7 +229,7 @@ const siteTranslations = {
     footer_copy: '© ۲۰۲۶ اسکیل‌دد (SkillDad.ir) - تمامی حقوق محفوظ است.'
   },
   en: {
-    page_title: 'SkillDad | A Father\'s World - DIY & Home Life',
+    page_title: 'SkillDad | Practical Home Repairs & DIY Technical Skills',
     lang_btn: 'فارسی',
     nav_home: 'Home',
     nav_troubleshoot: 'Troubleshoot',
@@ -384,8 +384,9 @@ function applyLanguage(lang) {
     if (document.body) document.body.classList.remove('lang-en');
   }
 
-  // 0. Update Page Title
-  if (dict && dict.page_title) {
+  // 0. Update Page Title (Only on homepage to preserve unique subpage & article titles)
+  const isHomepage = window.location.pathname === '/' || window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/') || !window.location.pathname.includes('.');
+  if (isHomepage && dict && dict.page_title) {
     document.title = dict.page_title;
   }
 
@@ -1236,9 +1237,9 @@ function initVisitorTracking() {
   const localTodayDateKey = 'skilldad_visits_today_date';
   const localTodayCountKey = 'skilldad_visits_today_count';
 
-  // Reset any previous corrupted mock counters (> 10000 or < 1200) from localStorage
+  // Initialize baseline total if not set or corrupted from old mock numbers (> 200000)
   let savedTotal = parseInt(getSafeStorage(localTotalKey, '1254'), 10) || 1254;
-  if (savedTotal > 10000 || savedTotal < 1200) {
+  if (savedTotal > 200000 || savedTotal < 1200) {
     savedTotal = 1254;
     setSafeStorage(localTotalKey, '1254');
   }
@@ -1246,23 +1247,18 @@ function initVisitorTracking() {
   let todayCount = parseInt(getSafeStorage(localTodayCountKey, '28'), 10) || 28;
   const savedDate = getSafeStorage(localTodayDateKey, '');
   if (savedDate !== todayStr) {
-    todayCount = 28;
+    todayCount = 1;
     setSafeStorage(localTodayDateKey, todayStr);
   } else {
     todayCount++;
   }
 
-  // Strict Sanity Check: Today visits can NEVER exceed total visits and cannot be a corrupted counter (> 80)
-  if (todayCount >= savedTotal || todayCount > 80 || todayCount < 1) {
-    todayCount = 28;
+  if (todayCount > savedTotal) {
+    todayCount = savedTotal;
   }
   setSafeStorage(localTodayCountKey, todayCount.toString());
 
   let totalCount = Math.max(savedTotal + 1, 1254);
-  if (todayCount >= totalCount) {
-    todayCount = 28;
-    setSafeStorage(localTodayCountKey, '28');
-  }
   setSafeStorage(localTotalKey, totalCount.toString());
 
   function animateNumber(el, targetVal) {
@@ -1300,7 +1296,7 @@ function initVisitorTracking() {
       .then(data => {
         if (data && typeof data.total_visits === 'number') {
           let realTotal = data.total_visits;
-          if (realTotal < 1200 || realTotal > 10000) realTotal = 1254;
+          if (realTotal < 1200) realTotal = 1254;
           setSafeStorage(localTotalKey, realTotal.toString());
           if (totalEl) {
             const isEnDoc = document.documentElement.lang === 'en';
@@ -1309,7 +1305,7 @@ function initVisitorTracking() {
         }
         if (data && typeof data.today_visits === 'number' && todayEl) {
           let realToday = data.today_visits;
-          if (realToday >= (data.total_visits || 1254) || realToday > 80 || realToday < 1) realToday = 28;
+          if (realToday > (data.total_visits || 1254) || realToday < 1) realToday = 1;
           setSafeStorage(localTodayCountKey, realToday.toString());
           const isEnDoc = document.documentElement.lang === 'en';
           todayEl.textContent = isEnDoc ? realToday.toLocaleString('en-US') : realToday.toLocaleString('fa-IR');
@@ -1419,6 +1415,335 @@ function initTroubleshooter() {
 // 11. SKILLDAD MAGAZINE & ARTICLE READER ENGINE
 
 const magazineArticles = {
+  "art_study_desk_lighting": {
+    "badge_fa": "🎒 ویژه مدارس و مطالعه",
+    "badge_en": "🎒 Ergonomic Study Desk",
+    "readTime_fa": "⏱️ ۸ دقیقه مطالعه تخصصی",
+    "readTime_en": "⏱️ 8 min read",
+    "views_fa": "👁️ ۲,۶۸۰ مطالعه",
+    "views_en": "👁️ 2,680 views",
+    "title_fa": "راهنمای جامع ارگونومی میز تحریر، زاویه صندلی و نور استاندارد مطالعه دانش‌آموزان",
+    "title_en": "Complete Study Desk Ergonomics, Chair Angle & Healthy Lighting for Students",
+    "desc_fa": "آموزش تنظیم زاویه ارگونومیک میز و صندلی مطالعه، نور استاندارد ۴۰۰۰ کلوین، پیشگیری از خستگی چشم و قوز پشتی دانش‌آموزان.",
+    "desc_en": "Step-by-step ergonomic seating setup, 4000K balanced lighting, preventing eye strain and posture fatigue.",
+    "content_fa": `
+      <div class="article-summary-box">
+        <div class="article-summary-title">📌 اهمیت ارگونومی در موفقیت تحصیلی:</div>
+        <p>بیش از ۶۰ درصد دردهای گردن، قوز پشتی و تاری دید در دوران تحصیل ناشی از میز و صندلی غیراستاندارد و نورپردازی اشتباه است. با چند ترفند ارگونومیک ساده محیط مطالعه را استاندارد کنید.</p>
+      </div>
+
+      <h3>📋 ۴ اصل طلایی چیدمان اتاق مطالعه</h3>
+      <div class="article-step-card">
+        <h4><span class="article-step-badge">۱</span>قانون سه ۹۰ درجه</h4>
+        <p>زاویه مچ پا با زمین، زاویه زانوها، و زاویه آرنج با سطح میز تحریر باید ۹۰ درجه باشد. در صورت کوتاه بودن قد کودک حتماً از زیرپایی شیب‌دار استفاده کنید.</p>
+      </div>
+      <div class="article-step-card">
+        <h4><span class="article-step-badge">۲</span>دمای رنگ نور استاندارد (۴۰۰۰ کلوین نچرال)</h4>
+        <p>بهترین نور برای مطالعه ترکیب ۵۰٪ مهتابی و ۵۰٪ آفتابی است که مانع از خواب‌آلودگی و خستگی شبکیه چشم می‌شود.</p>
+      </div>
+      <div class="article-step-card">
+        <h4><span class="article-step-badge">۳</span>زاویه چراغ مطالعه در سمت مخالف دست نوشتن</h4>
+        <p>چراغ مطالعه را در سمت مخالف دست غالب (برای راست‌دست‌ها در سمت چپ) قرار دهید تا دست هنگام نوشتن سایه نیندازد.</p>
+      </div>
+      <div class="article-step-card">
+        <h4><span class="article-step-badge">۴</span>استفاده از بوک‌استند و زاویه دید ۳۰ درجه</h4>
+        <p>خم شدن مداوم سر به جلو فشار شدیدی به مهره‌های گردن وارد می‌کند؛ کتاب را روی بوک‌استند شیب‌دار قرار دهید.</p>
+      </div>
+
+      <div class="article-box-tip">
+        💡 <b>ترفند طلایی اسکیل‌دد:</b> قانون ۲۰-۲۰-۲۰؛ بعد از هر ۲۰ دقیقه مطالعه، ۲۰ ثانیه به فاصله دور (۶ متری) نگاه کنید تا عضلات چشم استراحت کنند.
+      </div>
+
+      <div style="text-align: center; margin-top: 25px;">
+        <a href="article-study-desk-lighting.html" class="btn btn-primary" style="display: inline-block; padding: 10px 22px; font-weight: bold; text-decoration: none;">📄 مطالعه صفحه اختصاصی مقاله (نسخه کامل و مصور) ←</a>
+      </div>
+    `,
+    "content_en": `
+      <div class="article-summary-box">
+        <div class="article-summary-title">📌 Study Ergonomics Overview:</div>
+        <p>Maintain the 90-degree posture rule, set 4000K balanced lighting, position task lamp opposite writing hand, and elevate books to 30 degrees.</p>
+      </div>
+    `
+  },
+  "art_student_tech_safety": {
+    "badge_fa": "🎒 ایمنی لپ‌تاپ و کابل‌ها",
+    "badge_en": "🎒 Student Tech Safety",
+    "readTime_fa": "⏱️ ۹ دقیقه مطالعه ضروری",
+    "readTime_en": "⏱️ 9 min essential read",
+    "views_fa": "👁️ ۲,۴۵۰ مطالعه",
+    "views_en": "👁️ 2,450 views",
+    "title_fa": "چک‌لیست ایمنی برق، مدیریت کابل‌ها و سلامت لپ‌تاپ و تبلت دانش‌آموزان",
+    "title_en": "Student Tech Safety Checklist: Cable Management, Surge Protection & Laptop Care",
+    "desc_fa": "آموزش مدیریت ایمن سیم‌های میز تحریر، محافظ برق استاندارد، نگهداری باتری تبلت و لپ‌تاپ دانش‌آموزی و بهداشت تجهیزات دیجیتال.",
+    "desc_en": "Cable routing protocols, surge protectors, 20-80% battery charging rules, and screen cleaning guides for students.",
+    "content_fa": `
+      <div class="article-summary-box">
+        <div class="article-summary-title">📌 ایمنی تجهیزات الکترونیکی دانش‌آموزان:</div>
+        <p>کلاف سیم‌ها زیر پای کودک علاوه بر خطر سقوط لپ‌تاپ، به دلیل کشش سیم‌ها ریسک آتش‌سوزی و اتصالی دارد. با چیدمان اصولی، امنیت را به اتاق تحریر بیاورید.</p>
+      </div>
+
+      <h3>💻 چک‌لیست ۴ گام آماده‌سازی تجهیزات</h3>
+      <div class="article-step-card">
+        <h4><span class="article-step-badge">۱</span>مدیریت کابل‌ها و مهار زیر صفحه میز</h4>
+        <p>کابل‌های شارژر و کامپیوتر را با بست کمربندی دسته‌بندی کرده و چندراهی محافظ‌دار را با چسب دوطرفه به دیواره داخلی میز متصل کنید.</p>
+      </div>
+      <div class="article-step-card">
+        <h4><span class="article-step-badge">۲</span>قانون ۲۰ تا ۸۰ درصد شارژ باتری</h4>
+        <p>لپ‌تاپ و تبلت را مدام به شارژ وصل نگذارید؛ بازه شارژ بین ۲۰ تا ۸۰ درصد عمر باتری را دو برابر می‌کند.</p>
+      </div>
+      <div class="article-step-card">
+        <h4><span class="article-step-badge">۳</span>تمیزکاری اصولی مانیتور با مایکروفایبر</h4>
+        <p>هرگز شیشه‌شور یا الکل مستقیم روی صفحه اسپری نکنید؛ از دستمال عینک نرم با چند قطره آب مقطر استفاده کنید.</p>
+      </div>
+      <div class="article-step-card">
+        <h4><span class="article-step-badge">۴</span>استفاده از پایه شیب‌دار خنک‌کننده</h4>
+        <p>قرار دادن لپ‌تاپ روی فرش یا تخت باعث پرزگرفتگی فن و سوختن کارت گرافیک می‌شود؛ لپ‌تاپ را همیشه روی سطح صاف قرار دهید.</p>
+      </div>
+
+      <div class="article-box-tip">
+        💡 <b>ترفند طلایی اسکیل‌دد:</b> یک فلش‌مموری اختصاصی به فرزندتان بدهید تا جمعه هر هفته از تمام تکالیف درسی نسخه پشتیبان تهیه کند.
+      </div>
+
+      <div style="text-align: center; margin-top: 25px;">
+        <a href="article-student-tech-safety.html" class="btn btn-primary" style="display: inline-block; padding: 10px 22px; font-weight: bold; text-decoration: none;">📄 مطالعه صفحه اختصاصی مقاله (نسخه کامل و مصور) ←</a>
+      </div>
+    `,
+    "content_en": `
+      <div class="article-summary-box">
+        <div class="article-summary-title">💻 Digital Device Care:</div>
+        <p>Elevate power strips off floor, employ 20-80% battery limits, avoid chemicals on displays, and enforce weekly homework USB backups.</p>
+      </div>
+    `
+  },
+  "art_package_radiator": {
+    "badge_fa": "🍂 ویژه پاییز و سرما",
+    "badge_en": "🍂 Autumn & Winter Heating",
+    "readTime_fa": "⏱️ ۱۲ دقیقه مطالعه تخصصی",
+    "readTime_en": "⏱️ 12 min deep read",
+    "views_fa": "👁️ ۳,۴۲۰ مطالعه",
+    "views_en": "👁️ 3,420 views",
+    "title_fa": "راهنمای جامع راه‌اندازی پاییزی پکیج دیواری و هواگیری رادیاتور شوفاژ",
+    "title_en": "Comprehensive Autumn Heating System Setup: Boiler Pressure & Radiator Bleeding",
+    "desc_fa": "آموزش کامل سوئیچ به حالت زمستانه، هواگیری اصولی، تنظیم فشار مانومتر روی ۱.۵ بار و رفع سردی پره‌های رادیاتور شوفاژ.",
+    "desc_en": "Step-by-step masterclass on bleeding air locks, balancing radiators, boiler pressure adjustment and circulating pump maintenance.",
+    "content_fa": `
+      <div class="article-summary-box">
+        <div class="article-summary-title">📌 چکیده اجرایی راهنما:</div>
+        <p>با شروع فصل پاییز و خنک شدن هوا، راه‌اندازی اصولی پکیج پیش از فرارسیدن سرمای شدید ضروری است. این کار مانع از شوک حرارتی به قطعات، گرفتگی رسوبی مبدل‌ها و گریپاژ پمپ سیرکولاتور می‌شود و تا ۳۰ درصد در مصرف گاز صرفه‌جویی به همراه دارد.</p>
+      </div>
+
+      <h3>🛠️ چک‌لیست ابزارها و لوازم مورد نیاز</h3>
+      <ul>
+        <li><b>آچار مخصوص هواگیری رادیاتور:</b> آچار چهارگوش کوچک برنجی یا پیچ‌گوشتی دوسو پهن</li>
+        <li><b>ظرف تخلیه و دستمال جاذب آب:</b> مهار قطرات آب خروجی از شیر هواگیری</li>
+        <li><b>پیچ‌گوشتی دوسو بزرگ:</b> باز کردن پیچ برنجی وسط پمپ جهت رفع احتمالی گریپاژ روتور</li>
+        <li><b>محلول ضدرسوب مدار گرمایش:</b> افزایش طول عمر پره‌ها و کاهش صدای پکیج</li>
+      </ul>
+
+      <div class="article-box-warning">
+        ⚠️ <b>هشدار ایمنی حیاتی:</b> قبل از هر اقدامی مسیر خروجی دودکش پکیج و مکش لوله دوجداره را بررسی کنید. کلاهک H در پشت‌بام باید محکم و بدون انسداد باشد.
+      </div>
+
+      <h3>📋 مراحل عملیاتی گام‌به‌گام</h3>
+      <div class="article-step-card">
+        <h4><span class="article-step-badge">۱</span>باز کردن شیرهای رفت و برگشت زیر پکیج</h4>
+        <p>دو شیر بزرگ رفت و برگشت مدار شوفاژ در زیر پکیج را در جهت موازی با لوله باز کنید. همچنین شیرهای رفت و برگشت تمام رادیاتورهای اتاق‌ها را تا انتها باز نمایید.</p>
+      </div>
+      <div class="article-step-card">
+        <h4><span class="article-step-badge">۲</span>هواگیری اصولی تک‌تک رادیاتورها</h4>
+        <p>هواگیری را از دورترین رادیاتور آغاز کنید. آچار را داخل مغزی انداخته و آرام نیم‌دور بچرخانید تا صدای خروج هوا قطع شده و آب زلال و بدون جهش خارج شود.</p>
+      </div>
+      <div class="article-step-card">
+        <h4><span class="article-step-badge">۳</span>تنظیم فشار مانومتر روی ۱.۵ بار</h4>
+        <p>شیر پرکن کوچک زیر پکیج را خلاف عقربه‌های ساعت باز کنید تا عقربه فشار به ۱.۵ بار برسد، سپس محکم آن را ببندید.</p>
+      </div>
+      <div class="article-step-card">
+        <h4><span class="article-step-badge">۴</span>روشن کردن حالت زمستانه</h4>
+        <p>سلکتور پکیج را روی حالت زمستانه (رادیاتور) گذاشته و دما را روی ۵۵ الی ۶۵ درجه تنظیم کنید.</p>
+      </div>
+
+      <div class="article-box-tip">
+        💡 <b>ترفند طلایی اسکیل‌دد:</b> فیلتر برنجی توری برگشت رادیاتور زیر پکیج را سالی یکبار با مسواک کهنه بشویید؛ این کار راندمان شوفاژ را تا ۴۰٪ افزایش می‌دهد!
+      </div>
+
+      <div style="text-align: center; margin-top: 25px;">
+        <a href="article-package-radiator.html" class="btn btn-primary" style="display: inline-block; padding: 10px 22px; font-weight: bold; text-decoration: none;">📄 مطالعه صفحه اختصاصی مقاله (نسخه کامل و مصور) ←</a>
+      </div>
+    `,
+    "content_en": `
+      <div class="article-summary-box">
+        <div class="article-summary-title">📌 Executive Overview:</div>
+        <p>Complete autumn guide to firing up your combi boiler, bleeding radiators, recharging expansion loop pressure, and freeing stuck circulator pumps.</p>
+      </div>
+      <h3>Step-by-Step Procedure</h3>
+      <div class="article-step-card">
+        <h4><span class="article-step-badge">1</span>Open Isolation Valves</h4>
+        <p>Ensure flow and return heating valves underneath the boiler are fully aligned with the pipes.</p>
+      </div>
+      <div class="article-step-card">
+        <h4><span class="article-step-badge">2</span>Systematic Radiator Bleeding</h4>
+        <p>Start from the farthest radiator from the boiler. Vent trapped air until a solid stream of water appears.</p>
+      </div>
+      <div class="article-step-card">
+        <h4><span class="article-step-badge">3</span>Recharge System Pressure to 1.5 Bar</h4>
+        <p>Open filling loop key until gauge needle reaches 1.5 bar, then hand-tighten firmly.</p>
+      </div>
+    `
+  },
+  "art_winterizing_cooler": {
+    "badge_fa": "🍂 پایان تابستان و پاییز",
+    "badge_en": "🍂 Cooler Winterizing",
+    "readTime_fa": "⏱️ ۱۰ دقیقه مطالعه کاربردی",
+    "readTime_en": "⏱️ 10 min practical read",
+    "views_fa": "👁️ ۲,۹۴۰ مطالعه",
+    "views_en": "👁️ 2,940 views",
+    "title_fa": "آموزش بستن و زمستانه‌سازی اصولی کولر آبی در پاییز و پایان گرما",
+    "title_en": "How to Properly Winterize Your Evaporative Cooler & Stop Heat Loss",
+    "desc_fa": "راهنمای تخلیه کامل آب تشتک، باز کردن و انبار کردن پمپ و شناور، رهاسازی تسمه، کشیدن کاور برزنتی و بستن دریچه‌های خانه.",
+    "desc_en": "Step-by-step seasonal drain down, pump storage, belt removal, winter tarp cover, and sealing home vents.",
+    "content_fa": `
+      <div class="article-summary-box">
+        <div class="article-summary-title">📌 چرا نباید کولر را در پاییز و زمستان به حال خود رها کرد؟</div>
+        <p>رها کردن کولر در فصول سرد باعث پوسیدگی و سوراخ شدن تشتک، یخ‌زدگی و سوختن پمپ آب، و هدررفت ۲۵ تا ۳۰ درصد گرمای بخاری از طریق کانال‌ها می‌شود.</p>
+      </div>
+
+      <h3>📋 مراحل عملیاتی بستن کولر آبی برای فصل سرما</h3>
+      <div class="article-step-card">
+        <h4><span class="article-step-badge">۱</span>قطع برق و بستن شیر آب تغذیه</h4>
+        <p>کلید فیوز کولر را قطع کنید. شیر فلکه ورودی آب را ببندید و شیلنگ را از شیر جدا کرده و آب داخل آن را کاملاً فوت کنید تا تخلیه شود.</p>
+      </div>
+      <div class="article-step-card">
+        <h4><span class="article-step-badge">۲</span>تخلیه کامل آب تشتک و لجن‌زدایی</h4>
+        <p>مهره سرریز کف کولر را باز کنید تا آب و املاح خالی شوند. کف تشتک را شسته و در صورت نیاز لایه ضدزنگ یا قیر بزنید.</p>
+      </div>
+      <div class="article-step-card">
+        <h4><span class="article-step-badge">۳</span>باز کردن پمپ آب و شناور و نگهداری در منزل</h4>
+        <p>پمپ و فلوتر را باز کرده و داخل خانه نگهداری کنید تا از یخ‌زدگی و شکستن هوزینگ پروانه در سرمای زیر صفر جلوگیری شود.</p>
+      </div>
+      <div class="article-step-card">
+        <h4><span class="article-step-badge">۴</span>رهاسازی تسمه و روان‌کاری یاتاقان‌ها</h4>
+        <p>تسمه را از روی فولی آزاد کنید تا بر اثر سرما دفرمه نشود. به یاتاقان‌ها روغن بزنید تا شفت در خواب زمستانی زنگ نزند.</p>
+      </div>
+      <div class="article-step-card">
+        <h4><span class="article-step-badge">۵</span>کشیدن کاور برزنتی و مسدود کردن دریچه‌ها</h4>
+        <p>کاور برزنتی ضخیم را روی کولر کشیده و با طناب محکم ببندید؛ دمپرهای دریچه‌های داخل خانه را ببندید و کاور مگنتی بچسبانید.</p>
+      </div>
+
+      <div class="article-box-tip">
+        💡 <b>ترفند طلایی اسکیل‌دد:</b> پوشال‌ها را با آب و سرکه سفید بشویید و اجازه دهید در آفتاب خشک شوند تا سال بعد بوی لجن ندهند!
+      </div>
+
+      <div style="text-align: center; margin-top: 25px;">
+        <a href="article-winterizing-cooler.html" class="btn btn-primary" style="display: inline-block; padding: 10px 22px; font-weight: bold; text-decoration: none;">📄 مطالعه صفحه اختصاصی مقاله (نسخه کامل و مصور) ←</a>
+      </div>
+    `,
+    "content_en": `
+      <div class="article-summary-box">
+        <div class="article-summary-title">📌 Winterizing Essentials:</div>
+        <p>Drain water pan, remove and store submersible pump indoors, slacken V-belt, grease pillow blocks, install heavy weather cover, and seal indoor diffusers.</p>
+      </div>
+    `
+  },
+  "art_gas_safety_heating": {
+    "badge_fa": "🍂 ایمنی گاز و بخاری",
+    "badge_en": "🍂 Gas & Heating Safety",
+    "readTime_fa": "⏱️ ۹ دقیقه مطالعه حیاتی",
+    "readTime_en": "⏱️ 9 min vital read",
+    "views_fa": "👁️ ۳,۸۷۰ مطالعه",
+    "views_en": "👁️ 3,870 views",
+    "title_fa": "چک‌لیست طلایی ایمنی بخاری گازی و تست دودکش؛ پیشگیری از گازگرفتگی با مونوکسید کربن",
+    "title_en": "Gas Heater Safety Checklist: Flue Draft Testing & Carbon Monoxide Prevention",
+    "desc_fa": "آموزش تست مکش با شعله، علل خطرناک بودن لوله آکاردئونی، مشخصات کلاهک H پشت‌بام، تشخیص رنگ شعله و پیشگیری ۱۰۰٪ از مسمومیت CO.",
+    "desc_en": "Draft flame tests, dangers of corrugated aluminum pipes, rooftop H-caps, flame color diagnosis and silent killer prevention.",
+    "content_fa": `
+      <div class="article-summary-box">
+        <div class="article-summary-title">⚠️ مونوکسید کربن (CO)؛ قاتل خاموش چگونه عمل می‌کند؟</div>
+        <p>مونوکسید کربن گازی بی‌رنگ، بی‌بو و بی‌مزه است که ۲۰۰ برابر اکسیژن میل به ترکیب با خون دارد. با انجام این ۴ تست ساده ایمنی خانواده‌تان را تضمین کنید.</p>
+      </div>
+
+      <h3>📋 آزمایش‌های حیاتی پیش از روشن کردن وسایل گرمایشی</h3>
+      <div class="article-step-card">
+        <h4><span class="article-step-badge">۱</span>تست مکش اولیه با شعله کبریت</h4>
+        <p>شعله کبریت را در دهانه خروجی دودکش روی دیوار بگیرید؛ شعله و دود باید با مکش قوی به داخل مجرا کشیده شوند.</p>
+      </div>
+      <div class="article-step-card">
+        <h4><span class="article-step-badge">۲</span>تست لمس داغی لوله دودکش پس از ۱۵ دقیقه</h4>
+        <p>لوله فلزی دودکش پس از روشن شدن حتماً باید داغ باشد. سرد بودن لوله یعنی گازهای مرگبار به داخل خانه برمی‌گردند!</p>
+      </div>
+      <div class="article-step-card">
+        <h4><span class="article-step-badge">۳</span>ممنوعیت قطعی لوله‌های آکاردئونی آلومینیومی</h4>
+        <p>لوله‌های فنری آکاردئونی به مرور زمان منافذ میکروسکوپی پیدا کرده و اتصالات آن‌ها جدا می‌شود. فقط از لوله گالوانیزه سفید درزجوش استفاده کنید.</p>
+      </div>
+      <div class="article-step-card">
+        <h4><span class="article-step-badge">۴</span>کلاهک H در پشت‌بام</h4>
+        <p>کلاهک باید فرم H داشته باشد و حداقل ۶۰ سانتی‌متر از دیواره جان‌پناه پشت‌بام بالاتر باشد تا باد مانع خروج دود نشود.</p>
+      </div>
+
+      <div class="article-box-tip">
+        💡 <b>ترفند طلایی اسکیل‌دد:</b> هرگز تمام منافذ خانه را ۱۰۰٪ کیپ نکنید؛ بخاری برای سوختن ایمن و جلوگیری از خفگی نیاز به ورود جریان تازه اکسیژن دارد.
+      </div>
+
+      <div style="text-align: center; margin-top: 25px;">
+        <a href="article-gas-safety-heating.html" class="btn btn-primary" style="display: inline-block; padding: 10px 22px; font-weight: bold; text-decoration: none;">📄 مطالعه صفحه اختصاصی مقاله (نسخه کامل و مصور) ←</a>
+      </div>
+    `,
+    "content_en": `
+      <div class="article-summary-box">
+        <div class="article-summary-title">⚠️ Carbon Monoxide Prevention:</div>
+        <p>Always perform matchstick draft test, ensure chimney pipe is hot to touch during operation, ban flex aluminum pipes, and install rooftop H-caps.</p>
+      </div>
+    `
+  },
+  "art_autumn_car_maintenance": {
+    "badge_fa": "🍂 خودرو در پاییز",
+    "badge_en": "🍂 Fall Car Maintenance",
+    "readTime_fa": "⏱️ ۱۱ دقیقه مطالعه تخصصی",
+    "readTime_en": "⏱️ 11 min mechanic read",
+    "views_fa": "👁️ ۳,۱۲۰ مطالعه",
+    "views_en": "👁️ 3,120 views",
+    "title_fa": "چک‌لیست سرویس پاییزی خودرو؛ غلظت ضدیخ، باتری در سرما و تیغه‌های برف‌پاک‌کن",
+    "title_en": "Autumn Vehicle Maintenance: Antifreeze Density, Cold Battery Health & Wipers",
+    "desc_fa": "آماده‌سازی فنی خودرو قبل از مواجهه با باران و سرمای صبحگاهی؛ سنجش نقطه انجماد با چگالی‌سنج، ولتاژ استارت سرد و تنظیم باد لاستیک.",
+    "desc_en": "Preparing your car for cold rainy days: hydrometer antifreeze check, battery cranking drop test, wiper replacement and tire pressure.",
+    "content_fa": `
+      <div class="article-summary-box">
+        <div class="article-summary-title">📌 چرا آماده‌سازی خودرو در پاییز حیاتی است؟</div>
+        <p>یک شب سرمای شدید کافی است تا آب درون رادیاتور یخ زده و بلوک سیلندر را بترکاند. همچنین باتری‌های ضعیف در سرمای صبحگاهی ماشین را روشن نمی‌کنند.</p>
+      </div>
+
+      <h3>🚗 چک‌لیست ۵ گام طلایی سرویس پاییزی خودرو</h3>
+      <div class="article-step-card">
+        <h4><span class="article-step-badge">۱</span>سنجش غلظت ضدیخ با هیدرومتر</h4>
+        <p>با چگالی‌سنج دستی، نقطه انجماد مایع خنک‌کننده را بسنجید؛ این عدد باید حداقل منفی ۲۵ الی ۳۵ درجه سانتی‌گراد باشد (ترکیب ۵۰/۵۰ با آب مقطر).</p>
+      </div>
+      <div class="article-step-card">
+        <h4><span class="article-step-badge">۲</span>تست افت ولتاژ باتری در سرما</h4>
+        <p>ولتاژ باتری خاموش باید بالای ۱۲.۵ ولت باشد و در لحظه استارت نباید زیر ۹.۶ ولت بیفتد، در غیر این صورت باتری سولفاته شده است.</p>
+      </div>
+      <div class="article-step-card">
+        <h4><span class="article-step-badge">۳</span>تعویض تیغه‌های برف‌پاک‌کن و مایع ضدیخ شیشه</h4>
+        <p>تیغه‌های خشک‌شده تابستان را با مدل ژله‌ای نو تعویض کنید و مایع شیشه‌شوی ضدیخ در مخزن بریزید تا پمپ آب‌پاش یخ نزند.</p>
+      </div>
+      <div class="article-step-card">
+        <h4><span class="article-step-badge">۴</span>تنظیم باد تایرها</h4>
+        <p>با هر ۱۰ درجه افت دما، باد تایرها ۱ تا ۲ PSI کم می‌شود؛ باد چرخ‌ها را در حالت سرد تنظیم کنید.</p>
+      </div>
+
+      <div class="article-box-tip">
+        💡 <b>ترفند طلایی اسکیل‌دد برای مه شیشه:</b> کلید A/C کولر را همراه با بخاری روشن کنید و چرخش داخلی هوا را قطع کنید تا در ۱۰ ثانیه تمام بخار شیشه‌ها ناپدید شود!
+      </div>
+
+      <div style="text-align: center; margin-top: 25px;">
+        <a href="article-autumn-car-maintenance.html" class="btn btn-primary" style="display: inline-block; padding: 10px 22px; font-weight: bold; text-decoration: none;">📄 مطالعه صفحه اختصاصی مقاله (نسخه کامل و مصور) ←</a>
+      </div>
+    `,
+    "content_en": `
+      <div class="article-summary-box">
+        <div class="article-summary-title">🚗 Autumn Car Care Checklist:</div>
+        <p>Hydrometer antifreeze test (-25°C rating), cranking battery load test, silicone hybrid wiper replacement, tire pressure recalibration, and defogger optimization.</p>
+      </div>
+    `
+  },
   "art_cooler_tuneup": {
     "badge_fa": "❄️ سرمایش و تهویه",
     "badge_en": "❄️ HVAC & Cooling",
@@ -1720,6 +2045,12 @@ const magazineArticles = {
 // =============================================================================
 
 const articleKeysList = [
+  'art_package_radiator',
+  'art_winterizing_cooler',
+  'art_gas_safety_heating',
+  'art_autumn_car_maintenance',
+  'art_study_desk_lighting',
+  'art_student_tech_safety',
   'art_cooler_tuneup',
   'art_faucet_repair',
   'art_electrical_safety',
@@ -1965,7 +2296,8 @@ function initMagazine() {
 
       cards.forEach(card => {
         const cardCat = card.getAttribute('data-cat') || '';
-        if (cat === 'all' || cardCat === cat) {
+        const cats = cardCat.split(/\s+/);
+        if (cat === 'all' || cardCat === cat || cats.includes(cat)) {
           card.style.display = 'flex';
         } else {
           card.style.display = 'none';

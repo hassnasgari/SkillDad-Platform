@@ -35,8 +35,8 @@ if (isset($_GET['action']) && $_GET['action'] === 'visit' || isset($_GET['visit'
         $data['today_visits'] = intval($data['today_visits'] ?? 28) + 1;
     }
     $data['total_visits'] = intval($data['total_visits'] ?? 1254) + 1;
-    if ($data['today_visits'] >= $data['total_visits'] || $data['today_visits'] > 80) {
-        $data['today_visits'] = 28;
+    if ($data['today_visits'] > $data['total_visits']) {
+        $data['today_visits'] = $data['total_visits'];
     }
     @file_put_contents($cache_file, json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
     echo json_encode($data, JSON_UNESCAPED_UNICODE);

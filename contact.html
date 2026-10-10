@@ -166,10 +166,13 @@
           ✅ پیام شما با موفقیت ثبت شد و برای بابا ارسال گردید. در اسرع وقت پاسخ داده خواهد شد!
         </div>
 
-        <div style="text-align: center; margin-top: 24px; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 16px;">
+        <div style="text-align: center; margin-top: 24px; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 16px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;">
           <button type="button" onclick="openAdminMessagesModal()" class="btn btn-outline" style="font-size: 0.8rem; padding: 6px 14px; border-radius: 6px; opacity: 0.85;">
-            🔐 صندوق پیام‌های دریافتی (مخصوص مدیر سایت)
+            🔐 صندوق سریع پیام‌ها
           </button>
+          <a href="admin.html" target="_blank" class="btn btn-outline" style="font-size: 0.8rem; padding: 6px 14px; border-radius: 6px; background: rgba(0, 242, 254, 0.12); border-color: #00f2fe; color: #00f2fe; text-decoration: none; font-weight: 700;">
+            🚀 پنل مدیریت جامع (Admin Hub)
+          </a>
         </div>
       </div>
 
@@ -388,6 +391,7 @@
           <h3 style="margin: 0; font-size: 1.15rem; color: #fff; font-weight: 800;">صندوق پیام‌های دریافتی کاربران (<span id="adminMsgCount">۰</span>)</h3>
         </div>
         <div style="display: flex; gap: 10px; align-items: center;">
+          <a href="admin.html" target="_blank" class="btn btn-sm btn-outline" style="padding: 5px 12px; font-size: 0.78rem; border-radius: 6px; background: rgba(0, 242, 254, 0.15); border-color: #00f2fe; color: #00f2fe; text-decoration: none; font-weight: 700;">پنل مدیریت جامع 🚀</a>
           <button onclick="exportMessagesJson()" class="btn btn-sm btn-outline" style="padding: 5px 12px; font-size: 0.78rem; border-radius: 6px;">دانلود نسخه JSON 📥</button>
           <button onclick="clearAllMessages()" class="btn btn-sm btn-outline" style="padding: 5px 12px; font-size: 0.78rem; color: #ef4444; border-color: rgba(239, 68, 68, 0.4); border-radius: 6px;">حذف همه 🗑️</button>
           <button onclick="closeAdminMessagesModal()" style="background: none; border: none; color: #fff; font-size: 1.8rem; cursor: pointer; line-height: 1; padding: 0 6px;">&times;</button>

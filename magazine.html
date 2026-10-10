@@ -1,12 +1,12 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fa" dir="rtl" translate="no" class="notranslate">
 <head>
   <meta name="google" content="notranslate">
-  <meta name="referrer" content="no-referrer">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="dyraRTBdBb9bD7OzLm7y2F0F-CKpOD88HWv4vWGoZJ0">
-  <title>SkillDad | دنیای یک پدر</title>
+  <title>مجله تخصصی آموزش و مهارت‌های فنی خانه | SkillDad</title>
   <meta name="description" content="مرجع آموزش کارهای فنی، عیب‌یابی و تعمیرات خانه، سرویس کولر و پکیج، برق و لوله‌کشی، شنبه‌ابزار، خودرو و خودکفایی - اسکیل‌دد (SkillDad.ir)">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="icon" type="image/x-icon" href="favicon.ico?v=2026.12">
@@ -46,11 +46,11 @@
   <!-- SEO & Social OpenGraph Tags -->
   <meta name="keywords" content="اسکیل دد, آموزش تعمیرات خانه, سرویس کولر آبی, تعمیر شیر آب اهرمی, سیم کشی پریز و کلید, عیب یابی پمپ آب, رسوب زدایی اسپرسوساز, جرم گیری لباسشویی, رگلاژ لولای کابینت, شنبه ابزار, آموزش فنی خانه, خودکفایی در خانه, SkillDad, آموزش کارهای فنی">
   <meta name="author" content="اسکیل‌دد - SkillDad">
-  <link rel="canonical" href="https://skilldad.ir/">
-  <meta property="og:title" content="SkillDad | دنیای یک پدر">
-  <meta property="og:description" content="آموزش‌های ساده و اصولی خودکفایی و تعمیرات خانه، کولر، لوله‌کشی، برق، خودرو و شنبه‌ابزار">
+  <link rel="canonical" href="https://skilldad.ir/magazine.html">
+  <meta property="og:title" content="مجله تخصصی آموزش و مهارت‌های فنی خانه | SkillDad">
+  <meta property="og:description" content="مقالات آموزشی، راهنماهای کاربردی نگهداری تاسیسات، برق، لوله‌کشی و خودکفایی خانواده در مجله اسکیل‌دد">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://skilldad.ir/">
+  <meta property="og:url" content="https://skilldad.ir/magazine.html">
   <meta property="og:image" content="https://skilldad.ir/assets/img/profile.jpg">
   <meta name="twitter:card" content="summary_large_image">
 
@@ -114,19 +114,19 @@
             "@type": "ListItem",
             "position": 2,
             "name": "عیب‌یاب هوشمند",
-            "item": "https://skilldad.ir/#troubleshoot"
+            "item": "https://skilldad.ir/troubleshoot.html"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": "ویدیوهای آموزشی",
-            "item": "https://skilldad.ir/#videos"
+            "item": "https://skilldad.ir/videos.html"
           },
           {
             "@type": "ListItem",
             "position": 4,
             "name": "مجله تخصصی اسکیل‌دد",
-            "item": "https://skilldad.ir/#magazine"
+            "item": "https://skilldad.ir/magazine.html"
           }
         ]
       },
@@ -263,12 +263,14 @@
     <div class="container">
       <div class="section-header">
         <span class="section-badge">📚 دانشنامه و مجله تخصصی</span>
-        <h2 class="section-title">دانشنامه خودکفایی و <span class="gradient-title">راهنماهای کاربردی</span></h2>
+        <h1 class="section-title">دانشنامه آموزش و <span class="gradient-title">مهارت‌های فنی خانه</span></h1>
         <p class="section-desc">مقالات آموزشی مصور و گام‌به‌گام براساس استانداردهای مهندسی و تجربیات پدرانه</p>
       </div>
 
       <div class="magazine-tabs">
         <button class="mag-tab active" data-mag-cat="all">همه مقالات</button>
+        <button class="mag-tab" data-mag-cat="autumn" style="border: 1px solid #ea580c; background: rgba(234, 88, 12, 0.12); color: #f97316; font-weight: bold;">🍂 ویژه پاییز و سرما</button>
+        <button class="mag-tab" data-mag-cat="school" style="border: 1px solid #0284c7; background: rgba(2, 132, 199, 0.12); color: #38bdf8; font-weight: bold;">🎒 ویژه بازگشایی مدارس</button>
         <button class="mag-tab" data-mag-cat="cooling">❄️ سرمایش و پکیج</button>
         <button class="mag-tab" data-mag-cat="plumbing">🚰 لوله‌کشی و پمپ</button>
         <button class="mag-tab" data-mag-cat="electrical">⚡ برق و ایمنی</button>
@@ -279,6 +281,187 @@
       </div>
 
       <div id="magazineGrid" class="magazine-grid">
+        <!-- 1. پکیج و رادیاتور پاییزی -->
+        <div class="magazine-card" data-cat="autumn cooling plumbing" onclick="openArticleModal('art_package_radiator')">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span class="mag-badge" style="background: #ea580c; color: #fff;">🍂 ویژه پاییز و سرما</span>
+            <span class="mag-read-time">⏱️ ۱۲ دقیقه مطالعه تخصصی</span>
+          </div>
+          <h3 class="mag-title">راهنمای جامع راه‌اندازی پاییزی پکیج دیواری و هواگیری رادیاتور شوفاژ</h3>
+          <p class="mag-desc">آموزش گام‌به‌گام سوئیچ به حالت زمستانه، هواگیری اصولی، تنظیم فشار مانومتر روی ۱.۵ بار و رفع سردی پره‌های رادیاتور شوفاژ.</p>
+          <div class="mag-footer">
+            <span class="mag-author">✍️ تحریریه اسکیل‌دد</span>
+            <a href="article-package-radiator.html" onclick="event.stopPropagation();" class="mag-read-btn" style="color: var(--amber-primary); font-weight: bold; text-decoration: none;">صفحه اختصاصی مقاله ←</a>
+          </div>
+        </div>
+
+        <!-- 2. بستن کولر آبی در پاییز -->
+        <div class="magazine-card" data-cat="autumn cooling" onclick="openArticleModal('art_winterizing_cooler')">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span class="mag-badge" style="background: #ea580c; color: #fff;">🍂 پایان تابستان و پاییز</span>
+            <span class="mag-read-time">⏱️ ۱۰ دقیقه مطالعه کاربردی</span>
+          </div>
+          <h3 class="mag-title">آموزش بستن و زمستانه‌سازی اصولی کولر آبی در پاییز و پایان گرما</h3>
+          <p class="mag-desc">تخلیه آب تشتک، باز کردن و انبار پمپ و شناور در منزل، رهاسازی تسمه، کاور برزنتی ضدآب و بستن دریچه‌ها برای جلوگیری از اتلاف گرما.</p>
+          <div class="mag-footer">
+            <span class="mag-author">✍️ تحریریه اسکیل‌دد</span>
+            <a href="article-winterizing-cooler.html" onclick="event.stopPropagation();" class="mag-read-btn" style="color: var(--amber-primary); font-weight: bold; text-decoration: none;">صفحه اختصاصی مقاله ←</a>
+          </div>
+        </div>
+
+        <!-- 3. ایمنی گاز و تست دودکش بخاری -->
+        <div class="magazine-card" data-cat="autumn electrical home" onclick="openArticleModal('art_gas_safety_heating')">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span class="mag-badge" style="background: #9a3412; color: #fff;">🍂 ایمنی حیاتی فصل سرما</span>
+            <span class="mag-read-time">⏱️ ۹ دقیقه مطالعه حیاتی</span>
+          </div>
+          <h3 class="mag-title">چک‌لیست طلایی ایمنی بخاری گازی و تست دودکش؛ پیشگیری از گازگرفتگی با مونوکسید کربن</h3>
+          <p class="mag-desc">آموزش تست مکش با شعله کبریت، لمس داغی لوله، خطرات لوله‌های آکاردئونی، کلاهک H پشت‌بام و تشخیص رنگ شعله آبی استاندارد.</p>
+          <div class="mag-footer">
+            <span class="mag-author">✍️ تحریریه اسکیل‌دد</span>
+            <a href="article-gas-safety-heating.html" onclick="event.stopPropagation();" class="mag-read-btn" style="color: var(--amber-primary); font-weight: bold; text-decoration: none;">صفحه اختصاصی مقاله ←</a>
+          </div>
+        </div>
+
+        <!-- 4. سرویس پاییزی خودرو -->
+        <div class="magazine-card" data-cat="autumn auto" onclick="openArticleModal('art_autumn_car_maintenance')">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span class="mag-badge" style="background: #ea580c; color: #fff;">🍂 خودرو در پاییز</span>
+            <span class="mag-read-time">⏱️ ۱۱ دقیقه مطالعه مکانیک</span>
+          </div>
+          <h3 class="mag-title">چک‌لیست سرویس پاییزی خودرو؛ غلظت ضدیخ، باتری در سرما و تیغه‌های برف‌پاک‌کن</h3>
+          <p class="mag-desc">سنجش نقطه انجماد ضدیخ با چگالی‌سنج، ولتاژ باتری در استارت سرد صبحگاهی، تعویض تیغه‌ها و تنظیم باد چرخ‌ها با کاهش دما.</p>
+          <div class="mag-footer">
+            <span class="mag-author">✍️ تحریریه اسکیل‌دد</span>
+            <a href="article-autumn-car-maintenance.html" onclick="event.stopPropagation();" class="mag-read-btn" style="color: var(--amber-primary); font-weight: bold; text-decoration: none;">صفحه اختصاصی مقاله ←</a>
+          </div>
+        </div>
+
+        <!-- 5. ارگونومی میز مطالعه مدارس -->
+        <div class="magazine-card" data-cat="school home electrical" onclick="openArticleModal('art_study_desk_lighting')">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span class="mag-badge" style="background: #0284c7; color: #fff;">🎒 بازگشایی مدارس و مهرماه</span>
+            <span class="mag-read-time">⏱️ ۸ دقیقه مطالعه تخصصی</span>
+          </div>
+          <h3 class="mag-title">راهنمای جامع ارگونومی میز تحریر، زاویه صندلی و نور استاندارد مطالعه دانش‌آموزان</h3>
+          <p class="mag-desc">آموزش قانون سه ۹۰ درجه صندلی، نور نچرال ۴۰۰۰ کلوین، زاویه تابش چراغ مطالعه و پیشگیری از خستگی چشم و قوز گردن.</p>
+          <div class="mag-footer">
+            <span class="mag-author">✍️ تحریریه اسکیل‌دد</span>
+            <a href="article-study-desk-lighting.html" onclick="event.stopPropagation();" class="mag-read-btn" style="color: var(--amber-primary); font-weight: bold; text-decoration: none;">صفحه اختصاصی مقاله ←</a>
+          </div>
+        </div>
+
+        <!-- 6. ایمنی تجهیزات دیجیتال دانش‌آموز -->
+        <div class="magazine-card" data-cat="school electrical tools" onclick="openArticleModal('art_student_tech_safety')">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span class="mag-badge" style="background: #0284c7; color: #fff;">🎒 ایمنی لپ‌تاپ و کابل‌ها</span>
+            <span class="mag-read-time">⏱️ ۹ دقیقه مطالعه کاربردی</span>
+          </div>
+          <h3 class="mag-title">چک‌لیست ایمنی برق، مدیریت کابل‌ها و سلامت لپ‌تاپ و تبلت دانش‌آموزان</h3>
+          <p class="mag-desc">مهار کابل‌های درهم‌پیچیده زیر میز تحریر، محافظت از وسایل، قانون ۲۰-۸۰ شارژ باتری و تمیزکاری اصولی بدون آسیب به مانیتور.</p>
+          <div class="mag-footer">
+            <span class="mag-author">✍️ تحریریه اسکیل‌دد</span>
+            <a href="article-student-tech-safety.html" onclick="event.stopPropagation();" class="mag-read-btn" style="color: var(--amber-primary); font-weight: bold; text-decoration: none;">صفحه اختصاصی مقاله ←</a>
+          </div>
+        </div>
+
+        <!-- 7. مهار اضطراب جدایی در اول مهر -->
+        <div class="magazine-card" data-cat="school lifestyle" onclick="window.location.href='article-separation-anxiety.html'">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span class="mag-badge" style="background: #0284c7; color: #fff;">🎒 روانشناسی و اول مهر</span>
+            <span class="mag-read-time">⏱️ ۸ دقیقه مطالعه راهبردی</span>
+          </div>
+          <h3 class="mag-title">خداحافظی بدون اشک؛ راهنمای والدین برای مهار اضطراب جدایی در هفته اول مهر</h3>
+          <p class="mag-desc">پروتکل گام‌به‌گام والدین برای آرامش بخشیدن به دانش‌آموزان نوورود، پرهیز از فرار پنهانی، خداحافظی کوتاه ۹۰ ثانیه‌ای و ایجاد حس امنیت.</p>
+          <div class="mag-footer">
+            <span class="mag-author">✍️ تحریریه اسکیل‌دد</span>
+            <a href="article-separation-anxiety.html" onclick="event.stopPropagation();" class="mag-read-btn" style="color: var(--amber-primary); font-weight: bold; text-decoration: none;">صفحه اختصاصی مقاله ←</a>
+          </div>
+        </div>
+
+        <!-- 8. تنظیم ساعت خواب دانش‌آموز -->
+        <div class="magazine-card" data-cat="school lifestyle" onclick="window.location.href='article-sleep-routine-school.html'">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span class="mag-badge" style="background: #0284c7; color: #fff;">🎒 روتین خواب و مدارس</span>
+            <span class="mag-read-time">⏱️ ۷ دقیقه راهنمای کاربردی</span>
+          </div>
+          <h3 class="mag-title">پایان شب‌بیداری‌های تابستان؛ برنامه‌ریزی عملی برای تنظیم ساعت بیولوژیک دانش‌آموز</h3>
+          <p class="mag-desc">راهنمای تغییر تدریجی ریتم شبانه‌روزی خواب، حذف نور آبی ۶۰ دقیقه قبل از خواب، روتین آماده‌سازی شبانه و بیدارباش شاداب با نور طبیعی خورشید.</p>
+          <div class="mag-footer">
+            <span class="mag-author">✍️ تحریریه اسکیل‌دد</span>
+            <a href="article-sleep-routine-school.html" onclick="event.stopPropagation();" class="mag-read-btn" style="color: var(--amber-primary); font-weight: bold; text-decoration: none;">صفحه اختصاصی مقاله ←</a>
+          </div>
+        </div>
+
+        <!-- 9. مدیریت زمان گوشی و بازی -->
+        <div class="magazine-card" data-cat="school electrical" onclick="window.location.href='article-screen-time-rules.html'">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span class="mag-badge" style="background: #0284c7; color: #fff;">🎒 مدیریت اسکرین‌تایم</span>
+            <span class="mag-read-time">⏱️ ۸ دقیقه مطالعه استراتژیک</span>
+          </div>
+          <h3 class="mag-title">محدودسازی گوشی و بازی‌های ویدئویی در فصل مدرسه؛ توافق‌نامه خانوادگی بدون جنگ و دعوا</h3>
+          <p class="mag-desc">روش تدوین پیمان‌نامه مکتوب دیجیتال با امضای کودک، ایستگاه شارژ مرکزی بیرون اتاق خواب، تفکیک تبلت درسی از بازی و جایگزین‌های هیجان‌انگیز فیزیکی.</p>
+          <div class="mag-footer">
+            <span class="mag-author">✍️ تحریریه اسکیل‌دد</span>
+            <a href="article-screen-time-rules.html" onclick="event.stopPropagation();" class="mag-read-btn" style="color: var(--amber-primary); font-weight: bold; text-decoration: none;">صفحه اختصاصی مقاله ←</a>
+          </div>
+        </div>
+
+        <!-- 10. مسئولیت‌پذیری در تکالیف درسی -->
+        <div class="magazine-card" data-cat="school lifestyle" onclick="window.location.href='article-homework-routine-parents.html'">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span class="mag-badge" style="background: #0284c7; color: #fff;">🎒 تکالیف و مشق شب</span>
+            <span class="mag-read-time">⏱️ ۸ دقیقه راهنمای والد و دانش‌آموز</span>
+          </div>
+          <h3 class="mag-title">مشق شب مال کیست؟ نحوه پرورش مسئولیت‌پذیری در انجام تکالیف بدون دخالت بیش‌ازحد والدین</h3>
+          <p class="mag-desc">خروج از نقش پلیس تکالیف، مرزبندی دقیق کمک والدین، تکنیک پومودورو کودکانه (۲۵ دقیقه تمرکز) و چشیدن عواقب طبیعی سهل‌انگاری درسی.</p>
+          <div class="mag-footer">
+            <span class="mag-author">✍️ تحریریه اسکیل‌دد</span>
+            <a href="article-homework-routine-parents.html" onclick="event.stopPropagation();" class="mag-read-btn" style="color: var(--amber-primary); font-weight: bold; text-decoration: none;">صفحه اختصاصی مقاله ←</a>
+          </div>
+        </div>
+
+        <!-- 11. تعامل با مدرسه و گروه اولیا -->
+        <div class="magazine-card" data-cat="school lifestyle" onclick="window.location.href='article-school-parent-communication.html'">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span class="mag-badge" style="background: #0284c7; color: #fff;">🎒 تعامل با مدرسه</span>
+            <span class="mag-read-time">⏱️ ۷ دقیقه راهنمای ارتباط موثر</span>
+          </div>
+          <h3 class="mag-title">ارتباط موثر با اولیای مدرسه و رهایی از استرس گروه‌های مجازی اولیا</h3>
+          <p class="mag-desc">پرهیز از تماس در ساعات استراحت معلم، بی‌صدا کردن گروه‌های شایعه‌ساز اولیا، حل خصوصی چالش‌های کلاسی و نگرش هم‌تیمی بودن با معلم.</p>
+          <div class="mag-footer">
+            <span class="mag-author">✍️ تحریریه اسکیل‌دد</span>
+            <a href="article-school-parent-communication.html" onclick="event.stopPropagation();" class="mag-read-btn" style="color: var(--amber-primary); font-weight: bold; text-decoration: none;">صفحه اختصاصی مقاله ←</a>
+          </div>
+        </div>
+
+        <!-- 12. دوست‌یابی و مقابله با قلدری -->
+        <div class="magazine-card" data-cat="school lifestyle" onclick="window.location.href='article-school-bullying-friendship.html'">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span class="mag-badge" style="background: #0284c7; color: #fff;">🎒 مهارت‌های اجتماعی</span>
+            <span class="mag-read-time">⏱️ ۸ دقیقه راهنمای ارتباطی</span>
+          </div>
+          <h3 class="mag-title">کمک به فرزند برای دوست‌یابی در مدرسه و شناسایی زودهنگام نشانه‌های انزوا یا قلدری</h3>
+          <p class="mag-desc">آموزش جملات یخ‌شکن آغاز دوستی، تشخیص علائم پنهان آزار همکلاسی‌ها (Bullying)، آموزش زبان بدن قاطعانه و تفکیک گزارش ایمنی از خبرچینی.</p>
+          <div class="mag-footer">
+            <span class="mag-author">✍️ تحریریه اسکیل‌دد</span>
+            <a href="article-school-bullying-friendship.html" onclick="event.stopPropagation();" class="mag-read-btn" style="color: var(--amber-primary); font-weight: bold; text-decoration: none;">صفحه اختصاصی مقاله ←</a>
+          </div>
+        </div>
+
+        <!-- 13. ارگونومی کوله‌پشتی و تغذیه -->
+        <div class="magazine-card" data-cat="school lifestyle" onclick="window.location.href='article-backpack-nutrition-school.html'">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <span class="mag-badge" style="background: #0284c7; color: #fff;">🎒 سلامت و تغذیه مدرسه</span>
+            <span class="mag-read-time">⏱️ ۸ دقیقه راهنمای ارگونومی و تغذیه</span>
+          </div>
+          <h3 class="mag-title">چک‌لیست سلامت اول مهر؛ از وزن ایمن کوله‌پشتی تا لقمه‌های مقوی و سالم زنگ تفریح</h3>
+          <p class="mag-desc">قانون حداکثر ۱۰ درصد وزن کوله نسبت به وزن کودک، چیدمان سنگین به سبک نزدیک کمر، لقمه‌های پایدار قند خون و جایگزینی کیک صنعتی با مغزها.</p>
+          <div class="mag-footer">
+            <span class="mag-author">✍️ تحریریه اسکیل‌دد</span>
+            <a href="article-backpack-nutrition-school.html" onclick="event.stopPropagation();" class="mag-read-btn" style="color: var(--amber-primary); font-weight: bold; text-decoration: none;">صفحه اختصاصی مقاله ←</a>
+          </div>
+        </div>
         <div class="magazine-card" data-cat="cooling" onclick="openArticleModal('art_cooler_tuneup')">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
             <span class="mag-badge">❄️ سرمایش و تهویه</span>

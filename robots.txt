@@ -1,3 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /admin.html
+Disallow: /article-template.html
+Disallow: /api/
+
 Sitemap: https://skilldad.ir/sitemap.xml

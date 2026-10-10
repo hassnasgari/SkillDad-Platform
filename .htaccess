@@ -10,6 +10,24 @@ AddCharset UTF-8 .html .css .js .json .xml
 DirectoryIndex index.html index.php
 Options -Indexes
 
+# Rewrite clean URLs & Canonical 301 Redirects (HTTPS + non-www)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # 1. Force HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # 2. Force non-www (redirect www.skilldad.ir to skilldad.ir)
+  RewriteCond %{HTTP_HOST} ^www\.skilldad\.ir$ [NC]
+  RewriteRule ^(.*)$ https://skilldad.ir/$1 [L,R=301]
+
+  # 3. Clean URLs to .html files automatically
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}\.html -f
+  RewriteRule ^(.*)$ $1.html [L]
+</IfModule>
+
 # 3. MIME Types
 <IfModule mod_mime.c>
   AddType image/svg+xml .svg .svgz

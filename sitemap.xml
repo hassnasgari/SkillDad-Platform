@@ -6,81 +6,160 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
-  <!-- 1. صفحه اصلی و بخش‌های کلیدی -->
+  <!-- 1. صفحه اصلی -->
   <url>
     <loc>https://skilldad.ir/</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-09-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
-  
-  <url>
-    <loc>https://skilldad.ir/#troubleshoot</loc>
-    <lastmod>2026-09-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
 
+  <!-- 2. صفحات مستقل و بخش‌های کلیدی تخصصی -->
   <url>
-    <loc>https://skilldad.ir/#videos</loc>
-    <lastmod>2026-09-06</lastmod>
+    <loc>https://skilldad.ir/videos.html</loc>
+    <lastmod>2026-09-30</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://skilldad.ir/#magazine</loc>
-    <lastmod>2026-09-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://skilldad.ir/#glossary</loc>
-    <lastmod>2026-09-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://skilldad.ir/#toolbox</loc>
-    <lastmod>2026-09-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://skilldad.ir/#faq</loc>
-    <lastmod>2026-09-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- 2. ویدیوهای شاخص کانال آپارات -->
-  <url>
-    <loc>https://skilldad.ir/#video-tywxzq4</loc>
-    <lastmod>2026-09-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.95</priority>
     <video:video>
       <video:thumbnail_loc>https://static.cdn.asset.aparat.com/avt/73041654-9098-b__5058.jpg</video:thumbnail_loc>
       <video:title>معجزه افزایش فشار آب ! اسیدشویی لوله‌های آب گرم</video:title>
       <video:description>آموزش گام‌به‌گام افزایش فشار آب گرم و اسیدشویی ایمن لوله‌ها بدون نیاز به لوله‌کش در اسکیل‌دد</video:description>
       <video:player_loc>https://www.aparat.com/video/video/embed/videohash/tywxzq4/vt/frame</video:player_loc>
     </video:video>
-  </url>
-
-  <url>
-    <loc>https://skilldad.ir/#video-meolcy3</loc>
-    <lastmod>2026-09-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
     <video:video>
       <video:thumbnail_loc>https://static.cdn.asset.aparat.com/avt/69552985-1766-b__8542.jpg</video:thumbnail_loc>
       <video:title>رفع مشکل خاموش نشدن پمپ آب با هواگیری</video:title>
       <video:description>آموزش هواگیری و تنظیم اتوماتیک پمپ آب خانگی جهت جلوگیری از یکسره کار کردن و سوختن پمپ</video:description>
       <video:player_loc>https://www.aparat.com/video/video/embed/videohash/meolcy3/vt/frame</video:player_loc>
     </video:video>
+  </url>
+
+  <url>
+    <loc>https://skilldad.ir/troubleshoot.html</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://skilldad.ir/magazine.html</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- 3. مقالات جامع فصلی و بازگشایی مدارس (SEO High-Priority Pillar Content) -->
+  <url>
+    <loc>https://skilldad.ir/article-package-radiator.html</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.88</priority>
+  </url>
+
+  <url>
+    <loc>https://skilldad.ir/article-winterizing-cooler.html</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.88</priority>
+  </url>
+
+  <url>
+    <loc>https://skilldad.ir/article-gas-safety-heating.html</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.88</priority>
+  </url>
+
+  <url>
+    <loc>https://skilldad.ir/article-autumn-car-maintenance.html</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.88</priority>
+  </url>
+
+  <url>
+    <loc>https://skilldad.ir/article-study-desk-lighting.html</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.88</priority>
+  </url>
+
+  <url>
+    <loc>https://skilldad.ir/article-student-tech-safety.html</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.88</priority>
+  </url>
+
+  <url>
+    <loc>https://skilldad.ir/article-separation-anxiety.html</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.88</priority>
+  </url>
+
+  <url>
+    <loc>https://skilldad.ir/article-sleep-routine-school.html</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.88</priority>
+  </url>
+
+  <url>
+    <loc>https://skilldad.ir/article-screen-time-rules.html</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.88</priority>
+  </url>
+
+  <url>
+    <loc>https://skilldad.ir/article-homework-routine-parents.html</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.88</priority>
+  </url>
+
+  <url>
+    <loc>https://skilldad.ir/article-school-parent-communication.html</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.88</priority>
+  </url>
+
+  <url>
+    <loc>https://skilldad.ir/article-school-bullying-friendship.html</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.88</priority>
+  </url>
+
+  <url>
+    <loc>https://skilldad.ir/article-backpack-nutrition-school.html</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.88</priority>
+  </url>
+
+  <!-- 4. سایر صفحات کاربردی -->
+  <url>
+    <loc>https://skilldad.ir/toolbox.html</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://skilldad.ir/glossary.html</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://skilldad.ir/contact.html</loc>
+    <lastmod>2026-09-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
   </url>
 
 </urlset>
